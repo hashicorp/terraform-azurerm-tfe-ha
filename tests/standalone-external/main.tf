@@ -4,7 +4,7 @@
 resource "random_string" "friendly_name" {
   length  = 4
   upper   = false
-  number  = false
+  numeric = false
   special = false
 }
 
@@ -38,16 +38,17 @@ module "standalone_external" {
   custom_agent_image_tag      = "hashicorp/tfc-agent:latest"
 
   # Standalone External Scenario
-  consolidated_services = var.consolidated_services
-  distribution          = "ubuntu"
-  database_version      = var.database_version
-  production_type       = "external"
-  iact_subnet_list      = ["0.0.0.0/0"]
-  vm_node_count         = 1
-  vm_sku                = "Standard_D4_v3"
-  vm_image_id           = "ubuntu"
-  load_balancer_public  = true
-  load_balancer_type    = "load_balancer"
+  consolidated_services    = var.consolidated_services
+  distribution             = "ubuntu"
+  database_version         = var.database_version
+  production_type          = "external"
+  iact_subnet_list         = ["0.0.0.0/0"]
+  vm_node_count            = 1
+  vm_sku                   = "Standard_D4_v3"
+  vm_image_id              = "ubuntu"
+  load_balancer_public     = true
+  load_balancer_type       = "load_balancer"
+  metrics_endpoint_enabled = true
 
   enable_ssh     = true
   create_bastion = false
